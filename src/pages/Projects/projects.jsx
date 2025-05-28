@@ -7,6 +7,8 @@ import LinkIcon from "@mui/icons-material/Link";
 import learnandachieve from "../../assets/learnandachieve.png";
 import coloHealth from "../../assets/coloHealth.png";
 import moneylog from "../../assets/moneylog.png";
+import conative from "../../assets/conative.png";
+import emailSignature from "../../assets/emailSignature.png";
 import BtnPrimary from "../../components/BtnPrimary";
 const projectData = [
   {
@@ -22,6 +24,20 @@ const projectData = [
       "A health screening platform guiding users through a 3-step process: patient history, payment, and blood draw scheduling for colorectal cancer testing.",
     image: coloHealth,
     link: "https://orders.newdaydiagnostics.com",
+  },
+  {
+    title: "Conative",
+    description:
+      "Ongoing maintenance and feature enhancements for Conative, a cutting-edge platform focused on [brief key feature or purpose of Conative].",
+    image: conative, // replace with your actual imported image variable
+    link: "https://conativeitsolutions.com/", // replace with actual URL if public
+  },
+  {
+    title: "Email Signature",
+    description:
+      "Developed and maintained a user-friendly platform for creating professional email signatures with customization and integration options.",
+    image: emailSignature, // replace with your actual imported image variable
+    link: "https://emailssignature.com/",
   },
   {
     title: "Moneylog",
@@ -109,7 +125,11 @@ export default function Projects() {
             {projectData[activeStep].description}
           </Typography>
 
-          <BtnPrimary text="View" to={projectData[activeStep].link} />
+          <BtnPrimary
+            text="View"
+            to={projectData[activeStep].link}
+            Icon={LinkIcon}
+          />
         </Paper>
 
         <MobileStepper

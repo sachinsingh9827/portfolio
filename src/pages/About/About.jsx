@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BtnPrimary from "../../components/BtnPrimary";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-
+import LinkIcon from "@mui/icons-material/Link";
 const About = () => {
   const [leftRef, leftVisible] = useScrollAnimation();
   const [rightRef, rightVisible] = useScrollAnimation();
@@ -83,7 +83,7 @@ const About = () => {
         <p className="text-gray-700 mb-2">
           <strong>MERN Stack Developer</strong> - Dollop Info-Tech Pvt. Ltd.,
           Indore (M.P.)
-          <br /> Experienced Full Stack developer with 1.1 years of hands-on
+          <br /> Experienced Full Stack developer with 1.6 years of hands-on
           experience in designing, implementing, and maintaining scalable web
           applications.
         </p>
@@ -91,17 +91,104 @@ const About = () => {
         <h3 className="text-2xl font-semibold mb-4 text-[#004080] shadow-lg">
           Projects
         </h3>
-        <p className="text-gray-700 mb-2">
-          <strong>Learn & Achieve | E-Learning Platform</strong>
-          <br /> Developed a comprehensive e-learning platform with features
-          such as admin and web interfaces, mock tests, online classes, and
-          subject-wise study materials.
-        </p>
-        <p className="text-gray-700 mb-2">
-          <strong>HEFT | Product Testing Website</strong>
-          <br /> Played a crucial role in frontend development by addressing
-          UI/UX challenges and ensuring a seamless user experience.
-        </p>
+
+        <div className="space-y-4">
+          <div>
+            <p className="text-gray-700 mb-2">
+              <strong>
+                <a
+                  href="https://learnandachieve.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#004080] hover:underline"
+                >
+                  Learn & Achieve | E-Learning Platform{" "}
+                  <LinkIcon className="rotate-[45deg]" />
+                </a>
+              </strong>
+              <br />
+              Developed a comprehensive e-learning platform with features such
+              as admin and web interfaces, mock tests, online classes, and
+              subject-wise study materials.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-700 mb-2">
+              <strong>
+                <a
+                  href="https://orders.newdaydiagnostics.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#004080] hover:underline"
+                >
+                  ColoHealth | Health Screening Platform
+                  <LinkIcon className="rotate-[45deg]" />
+                </a>
+              </strong>
+              <br />A health screening platform guiding users through a 3-step
+              process: patient history, payment, and blood draw scheduling for
+              colorectal cancer testing.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-700 mb-2">
+              <strong>
+                <a
+                  href="https://conativeitsolutions.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#004080] hover:underline"
+                >
+                  Conative | IT Solutions{" "}
+                  <LinkIcon className="rotate-[45deg]" />
+                </a>
+              </strong>
+              <br />
+              Ongoing maintenance and feature enhancements for Conative, a
+              cutting-edge platform focused on IT solutions and innovations.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-700 mb-2">
+              <strong>
+                <a
+                  href="https://emailssignature.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#004080] hover:underline"
+                >
+                  Email Signature | Professional Signatures{" "}
+                  <LinkIcon className="rotate-[45deg]" />
+                </a>
+              </strong>
+              <br />
+              Maintained a user-friendly platform for creating professional
+              email signatures with customization and integration options.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-gray-700 mb-2">
+              <strong>
+                <a
+                  href="https://moneylog-f.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#004080] hover:underline"
+                >
+                  Moneylog | Expense Tracker{" "}
+                  <LinkIcon className="rotate-[45deg]" />
+                </a>
+              </strong>
+              <br />
+              Smart expense tracking and budgeting app to manage your finances
+              with ease.
+            </p>
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-2">
           <BtnPrimary text="Skills" to="/skills" />

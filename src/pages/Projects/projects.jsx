@@ -53,29 +53,23 @@ export default function Projects() {
   const maxSteps = projectData.length;
   const intervalRef = React.useRef(null);
 
-  // Function to start or restart auto-slide
-  const startAutoSlide = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
+  // Auto-slide function with restart on manual next/back
+  React.useEffect(() => {
     intervalRef.current = setInterval(() => {
       setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
     }, 4000);
-  };
 
-  React.useEffect(() => {
-    startAutoSlide();
-    return () => clearInterval(intervalRef.current); // Cleanup on unmount
+    return () => clearInterval(intervalRef.current);
   }, [maxSteps]);
 
   const handleNext = () => {
     setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
-    startAutoSlide(); // Restart timer
+    clearInterval(intervalRef.current);
   };
 
   const handleBack = () => {
     setActiveStep((prev) => (prev === 0 ? maxSteps - 1 : prev - 1));
-    startAutoSlide(); // Restart timer
+    clearInterval(intervalRef.current);
   };
 
   return (

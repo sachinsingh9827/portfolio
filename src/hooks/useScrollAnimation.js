@@ -2,20 +2,20 @@ import { useState, useEffect, useRef } from "react";
 
 export function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
+    const node = ref.current; // Capture ref.current here
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
+      ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.2 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    if (node) observer.observe(node);
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (node) observer.unobserve(node);
     };
   }, []);
 

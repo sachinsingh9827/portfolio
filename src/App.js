@@ -14,7 +14,7 @@ import Contact from "./pages/Contact/Contact";
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Add this here */}
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
 

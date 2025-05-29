@@ -4,8 +4,6 @@ import About from "../About/About";
 import Skills from "../Skills/Skills";
 import Projects from "../Projects/projects";
 
-// import other components you want to render here
-
 const Home = () => {
   return (
     <div>
@@ -13,8 +11,6 @@ const Home = () => {
       <Projects />
       <Skills />
       <About />
-      {/* <Contact /> */}
-      {/* Add other components here */}
     </div>
   );
 };

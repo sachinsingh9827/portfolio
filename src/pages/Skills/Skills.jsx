@@ -23,18 +23,12 @@ const skills = [
     name: "JavaScript (ES6)",
     icon: <SiJavascript className="text-black text-5xl" />,
   },
-  {
-    name: "Bootstrap",
-    icon: <SiBootstrap className="text-black text-5xl" />,
-  },
+  { name: "Bootstrap", icon: <SiBootstrap className="text-black text-5xl" /> },
   {
     name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-black text-5xl" />,
   },
-  {
-    name: "Git & GitHub",
-    icon: <SiGithub className="text-black text-5xl" />,
-  },
+  { name: "Git & GitHub", icon: <SiGithub className="text-black text-5xl" /> },
   {
     name: "RESTful API development",
     icon: <FaServer className="text-black text-5xl" />,
@@ -45,11 +39,7 @@ const skills = [
 const floatAnimation = {
   initial: { opacity: 0, y: 50 },
   whileInView: { opacity: 1, y: 0 },
-  transition: {
-    type: "spring",
-    stiffness: 100,
-    damping: 10,
-  },
+  transition: { type: "spring", stiffness: 100, damping: 10 },
   animate: {
     y: [0, -10, 0, 10, 0], // Up-down float loop
     transition: {

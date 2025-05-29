@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BtnPrimary from "../../components/BtnPrimary";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import LinkIcon from "@mui/icons-material/Link";
+
 const About = () => {
   const [leftRef, leftVisible] = useScrollAnimation();
-  const [rightRef, rightVisible] = useScrollAnimation();
-
-  const [leftAnimate, setLeftAnimate] = useState(false);
-  const [rightAnimate, setRightAnimate] = useState(false);
-
-  useEffect(() => {
-    if (leftVisible) {
-      setLeftAnimate(true);
-    } else {
-      setLeftAnimate(false);
-    }
-  }, [leftVisible]);
-
-  useEffect(() => {
-    if (rightVisible) {
-      setRightAnimate(true);
-    } else {
-      setRightAnimate(false);
-    }
-  }, [rightVisible]);
 
   return (
     <div className="flex items-center justify-center max-w-full mx-auto px-4 sm:px-8 py-12 min-h-screen bg-white font-montserrat mt-8">
-      {/* Left Content: order 1 on mobile, order 1 on md+ */}
+      {/* Left Content */}
       <div
         ref={leftRef}
-        className={`md:w-full mb-10 md:mb-0 transition-opacity duration-700 order-1 ${
-          leftAnimate ? "animate-slide-left opacity-100" : "opacity-0"
+        className={`md:w-full mb-10 md:mb-0 transition-opacity duration-700 ${
+          leftVisible ? "animate-slide-left opacity-100" : "opacity-0"
         }`}
       >
         <h2 className="text-4xl font-extrabold text-[#004080] mb-12 uppercase">
@@ -93,104 +74,58 @@ const About = () => {
         </h3>
 
         <div className="space-y-4">
-          <div>
-            <p className="text-gray-700 mb-2">
-              <strong>
-                <a
-                  href="https://learnandachieve.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004080] hover:underline"
-                >
-                  Learn & Achieve | E-Learning Platform{" "}
-                  <LinkIcon className="rotate-[45deg]" />
-                </a>
-              </strong>
-              <br />
-              Developed a comprehensive e-learning platform with features such
-              as admin and web interfaces, mock tests, online classes, and
-              subject-wise study materials.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-gray-700 mb-2">
-              <strong>
-                <a
-                  href="https://orders.newdaydiagnostics.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004080] hover:underline"
-                >
-                  ColoHealth | Health Screening Platform
-                  <LinkIcon className="rotate-[45deg]" />
-                </a>
-              </strong>
-              <br />A health screening platform guiding users through a 3-step
-              process: patient history, payment, and blood draw scheduling for
-              colorectal cancer testing.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-gray-700 mb-2">
-              <strong>
-                <a
-                  href="https://conativeitsolutions.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004080] hover:underline"
-                >
-                  Conative | IT Solutions{" "}
-                  <LinkIcon className="rotate-[45deg]" />
-                </a>
-              </strong>
-              <br />
-              Ongoing maintenance and feature enhancements for Conative, a
-              cutting-edge platform focused on IT solutions and innovations.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-gray-700 mb-2">
-              <strong>
-                <a
-                  href="https://emailssignature.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004080] hover:underline"
-                >
-                  Email Signature | Professional Signatures{" "}
-                  <LinkIcon className="rotate-[45deg]" />
-                </a>
-              </strong>
-              <br />
-              Maintained a user-friendly platform for creating professional
-              email signatures with customization and integration options.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-gray-700 mb-2">
-              <strong>
-                <a
-                  href="https://moneylog-f.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004080] hover:underline"
-                >
-                  Moneylog | Expense Tracker{" "}
-                  <LinkIcon className="rotate-[45deg]" />
-                </a>
-              </strong>
-              <br />
-              Smart expense tracking and budgeting app to manage your finances
-              with ease.
-            </p>
-          </div>
+          {[
+            {
+              url: "https://learnandachieve.in/",
+              title: "Learn & Achieve | E-Learning Platform",
+              description:
+                "Developed a comprehensive e-learning platform with features such as admin and web interfaces, mock tests, online classes, and subject-wise study materials.",
+            },
+            {
+              url: "https://orders.newdaydiagnostics.com",
+              title: "ColoHealth | Health Screening Platform",
+              description:
+                "A health screening platform guiding users through a 3-step process: patient history, payment, and blood draw scheduling for colorectal cancer testing.",
+            },
+            {
+              url: "https://conativeitsolutions.com/",
+              title: "Conative | IT Solutions",
+              description:
+                "Ongoing maintenance and feature enhancements for Conative, a cutting-edge platform focused on IT solutions and innovations.",
+            },
+            {
+              url: "https://emailssignature.com/",
+              title: "Email Signature | Professional Signatures",
+              description:
+                "Maintained a user-friendly platform for creating professional email signatures with customization and integration options.",
+            },
+            {
+              url: "https://moneylog-f.vercel.app",
+              title: "Moneylog | Expense Tracker",
+              description:
+                "Smart expense tracking and budgeting app to manage your finances with ease.",
+            },
+          ].map(({ url, title, description }) => (
+            <div key={url}>
+              <p className="text-gray-700 mb-2">
+                <strong>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#004080] hover:underline flex items-center gap-1"
+                  >
+                    {title} <LinkIcon className="rotate-[45deg]" />
+                  </a>
+                </strong>
+                <br />
+                {description}
+              </p>
+            </div>
+          ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-2">
+        <div className="flex flex-col sm:flex-row justify-center gap-2 mt-6">
           <BtnPrimary text="Skills" to="/skills" />
           <BtnPrimary text="Resume" to="/SachinSingh.pdf" download />
         </div>

@@ -7,11 +7,7 @@ const Experience = () => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    if (visible) {
-      setAnimate(true);
-    } else {
-      setAnimate(false);
-    }
+    setAnimate(visible);
   }, [visible]);
 
   return (
@@ -22,12 +18,12 @@ const Experience = () => {
 
       <div
         ref={ref}
-        className={`transition-opacity duration-700 ${
+        className={`transition-opacity duration-700 w-full max-w-5xl ${
           animate ? "opacity-100" : "opacity-0"
-        } w-full max-w-5xl`}
+        }`}
       >
         {/* Current Position */}
-        <div className="mb-8">
+        <section className="mb-8">
           <h3 className="text-2xl font-semibold mb-2 text-[#004080] shadow-lg">
             MERN Stack Developer
           </h3>
@@ -45,8 +41,8 @@ const Experience = () => {
               ship new features.
             </li>
             <li>
-              Implementing responsive design principles to ensure a seamless
-              user experience across devices.
+              Implementing responsive design principles to ensure seamless user
+              experience across devices.
             </li>
             <li>
               Participating in code reviews and providing constructive feedback
@@ -57,10 +53,10 @@ const Experience = () => {
               collaboration.
             </li>
           </ul>
-        </div>
+        </section>
 
         {/* Previous Position */}
-        <div className="mb-8">
+        <section className="mb-8">
           <h3 className="text-2xl font-semibold mb-2 text-[#004080] shadow-lg">
             MERN Stack Developer
           </h3>
@@ -88,10 +84,10 @@ const Experience = () => {
               learning environment.
             </li>
           </ul>
-        </div>
+        </section>
 
         {/* Internship Experience */}
-        <div className="mb-8">
+        <section className="mb-8">
           <h3 className="text-2xl font-semibold mb-2 text-[#004080] shadow-lg">
             MERN Stack Intern
           </h3>
@@ -112,9 +108,9 @@ const Experience = () => {
               applications.
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-2  mx-auto">
+        <div className="flex flex-col sm:flex-row justify-center gap-2 mx-auto">
           <BtnPrimary text="Skills" to="/skills" />
           <BtnPrimary text="Resume" to="/SachinSingh.pdf" download />
         </div>

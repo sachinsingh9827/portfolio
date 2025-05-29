@@ -28,7 +28,6 @@ module.exports = {
           "0%, 100%": { transform: "translateY(-5%)" },
           "50%": { transform: "translateY(0)" },
         },
-        // Added missing keyframes for referenced animations:
         bounceIn: {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.1)" },
@@ -124,9 +123,7 @@ module.exports = {
     function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide": {
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
+          "&::-webkit-scrollbar": { display: "none" },
           "-ms-overflow-style": "none",
           "scrollbar-width": "none",
         },

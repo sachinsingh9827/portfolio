@@ -6,7 +6,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LinkIcon from "@mui/icons-material/Link";
 import BtnPrimary from "../../components/BtnPrimary";
 
-// Import optimized images (consider converting them to WebP or compressing them)
+// Optimized project images (make sure to compress or convert to WebP for best performance)
 import learnandachieve from "../../assets/learnandachieve.png";
 import coloHealth from "../../assets/coloHealth.png";
 import moneylog from "../../assets/moneylog.png";

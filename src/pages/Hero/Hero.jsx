@@ -12,6 +12,7 @@ const generateGrayWhiteColor = () => {
 };
 
 const Hero = () => {
+  // Memoize triangles so they don't re-render unnecessarily
   const triangles = useMemo(() => {
     return Array.from({ length: triangleCount }, (_, i) => {
       const style = {
@@ -26,10 +27,12 @@ const Hero = () => {
 
   return (
     <section className="hero-wrapper" aria-label="Hero Section">
+      {/* Background triangles are decorative */}
       <div className="background-triangles" aria-hidden="true">
         {triangles}
       </div>
 
+      {/* Main hero content as a link */}
       <Link
         to="/skills"
         className="hero-content flex flex-col items-center border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-7xl hover:bg-gray-100 relative z-10"
@@ -40,7 +43,8 @@ const Hero = () => {
             src={sachin}
             alt="Sachin Singh portrait"
             className="max-w-full max-h-full object-contain rounded-lg"
-            loading="lazy"
+            loading="lazy" // lazy load image
+            decoding="async" // improve performance
           />
         </div>
 

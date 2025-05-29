@@ -8,7 +8,7 @@ import {
   SiGithub,
   SiDocker,
 } from "react-icons/si";
-import { FaReact, FaNodeJs, FaGitAlt, FaServer } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaServer } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const skills = [

@@ -10,64 +10,73 @@ import moneylog from "../../assets/moneylog.png";
 import conative from "../../assets/conative.png";
 import emailSignature from "../../assets/emailSignature.png";
 import BtnPrimary from "../../components/BtnPrimary";
+
 const projectData = [
   {
     title: "Learn and Achieve",
     description:
-      "Pradnya Learn and Achieve Pvt Ltd. is dedicated to enhancing the educational experience of students across India. We invite you to join us on this remarkable journey to build a brighter future for the next generation.",
+      "Pradnya Learn and Achieve Pvt Ltd. is dedicated to enhancing the educational experience of students across India...",
     image: learnandachieve,
     link: "https://learnandachieve.in/",
   },
   {
     title: "ColoHealth",
     description:
-      "A health screening platform guiding users through a 3-step process: patient history, payment, and blood draw scheduling for colorectal cancer testing.",
+      "A health screening platform guiding users through a 3-step process...",
     image: coloHealth,
     link: "https://orders.newdaydiagnostics.com",
   },
   {
     title: "Conative",
-    description:
-      "Ongoing maintenance and feature enhancements for Conative, a cutting-edge platform focused on [brief key feature or purpose of Conative].",
-    image: conative, // replace with your actual imported image variable
-    link: "https://conativeitsolutions.com/", // replace with actual URL if public
+    description: "Ongoing maintenance and feature enhancements for Conative...",
+    image: conative,
+    link: "https://conativeitsolutions.com/",
   },
   {
     title: "Email Signature",
     description:
-      "Developed and maintained a user-friendly platform for creating professional email signatures with customization and integration options.",
-    image: emailSignature, // replace with your actual imported image variable
+      "Developed a user-friendly platform for creating professional email signatures...",
+    image: emailSignature,
     link: "https://emailssignature.com/",
   },
   {
     title: "Moneylog",
-    description:
-      "Smart expense tracking and budgeting app to manage your finances with ease.",
+    description: "Smart expense tracking and budgeting app...",
     image: moneylog,
     link: "https://moneylog-f.vercel.app",
   },
-
-  // Add more projects here
 ];
 
 export default function Projects() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = projectData.length;
+  const intervalRef = React.useRef(null);
 
-  // Auto-slide every 2 seconds
-  React.useEffect(() => {
-    const interval = setInterval(() => {
+  // Function to start or restart auto-slide
+  const startAutoSlide = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
       setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
     }, 4000);
+  };
 
-    return () => clearInterval(interval);
+  React.useEffect(() => {
+    startAutoSlide();
+    return () => clearInterval(intervalRef.current); // Cleanup on unmount
   }, [maxSteps]);
 
-  const handleNext = () =>
+  const handleNext = () => {
     setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
-  const handleBack = () =>
+    startAutoSlide(); // Restart timer
+  };
+
+  const handleBack = () => {
     setActiveStep((prev) => (prev === 0 ? maxSteps - 1 : prev - 1));
+    startAutoSlide(); // Restart timer
+  };
 
   return (
     <div className="font-montserrat mt-10">
@@ -97,14 +106,14 @@ export default function Projects() {
           <Box
             component="img"
             sx={{
-              width: "100%", // full width container
-              maxHeight: { xs: 200, sm: 300, md: 400 }, // control max height by breakpoints
-              height: "auto", // keep aspect ratio
+              width: "100%",
+              maxHeight: { xs: 200, sm: 300, md: 400 },
+              height: "auto",
               display: "block",
-              objectFit: "contain", // show entire image without cropping
+              objectFit: "contain",
               borderRadius: 2,
-              backgroundColor: "#fff", // optional to avoid transparency issues
-              mx: "auto", // center horizontally if smaller than container
+              backgroundColor: "#fff",
+              mx: "auto",
             }}
             src={projectData[activeStep].image}
             alt={projectData[activeStep].title}
@@ -137,11 +146,7 @@ export default function Projects() {
           position="static"
           activeStep={activeStep}
           nextButton={
-            <Button
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === maxSteps - 1}
-            >
+            <Button size="small" onClick={handleNext} disabled={maxSteps === 1}>
               {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
@@ -150,11 +155,7 @@ export default function Projects() {
             </Button>
           }
           backButton={
-            <Button
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
+            <Button size="small" onClick={handleBack} disabled={maxSteps === 1}>
               {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
               ) : (

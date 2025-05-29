@@ -1,7 +1,7 @@
 import React from "react";
 import "./Hero.css";
 import BtnPrimary from "../../components/BtnPrimary";
-
+import sachin from "../../assets/sachin.png";
 const Hero = () => {
   const triangleCount = 150;
 
@@ -32,7 +32,7 @@ const Hero = () => {
         >
           <img
             className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-l-lg"
-            src="https://i.pravatar.cc/400"
+            src={sachin}
             alt="Sachin Singh"
           />
           <div className="flex flex-col justify-between p-10 leading-normal text-center md:text-left md:flex-1">

@@ -1,47 +1,49 @@
-import * as React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Button, MobileStepper, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Button, MobileStepper, Box, Typography, Paper } from "@mui/material";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LinkIcon from "@mui/icons-material/Link";
+import BtnPrimary from "../../components/BtnPrimary";
+
+// Import optimized images (consider converting them to WebP or compressing them)
 import learnandachieve from "../../assets/learnandachieve.png";
 import coloHealth from "../../assets/coloHealth.png";
 import moneylog from "../../assets/moneylog.png";
 import conative from "../../assets/conative.png";
 import emailSignature from "../../assets/emailSignature.png";
-import BtnPrimary from "../../components/BtnPrimary";
 
 const projectData = [
   {
     title: "Learn and Achieve",
     description:
-      "Pradnya Learn and Achieve Pvt Ltd. is dedicated to enhancing the educational experience of students across India...",
+      "Pradnya Learn and Achieve Pvt Ltd. is dedicated to enhancing the educational experience of students across India.",
     image: learnandachieve,
     link: "https://learnandachieve.in/",
   },
   {
     title: "ColoHealth",
     description:
-      "A health screening platform guiding users through a 3-step process...",
+      "A health screening platform guiding users through a 3-step process.",
     image: coloHealth,
     link: "https://orders.newdaydiagnostics.com",
   },
   {
     title: "Conative",
-    description: "Ongoing maintenance and feature enhancements for Conative...",
+    description: "Ongoing maintenance and feature enhancements for Conative.",
     image: conative,
     link: "https://conativeitsolutions.com/",
   },
   {
     title: "Email Signature",
     description:
-      "Developed a user-friendly platform for creating professional email signatures...",
+      "Developed a user-friendly platform for creating professional email signatures.",
     image: emailSignature,
     link: "https://emailssignature.com/",
   },
   {
     title: "Moneylog",
-    description: "Smart expense tracking and budgeting app...",
+    description: "Smart expense tracking and budgeting app.",
     image: moneylog,
     link: "https://moneylog-f.vercel.app",
   },
@@ -49,16 +51,14 @@ const projectData = [
 
 export default function Projects() {
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const maxSteps = projectData.length;
-  const intervalRef = React.useRef(null);
+  const intervalRef = useRef(null);
 
-  // Auto-slide function with restart on manual next/back
-  React.useEffect(() => {
+  useEffect(() => {
     intervalRef.current = setInterval(() => {
       setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
     }, 4000);
-
     return () => clearInterval(intervalRef.current);
   }, [maxSteps]);
 
@@ -99,6 +99,9 @@ export default function Projects() {
         >
           <Box
             component="img"
+            loading="lazy"
+            src={projectData[activeStep].image}
+            alt={projectData[activeStep].title}
             sx={{
               width: "100%",
               maxHeight: { xs: 200, sm: 300, md: 400 },
@@ -109,8 +112,6 @@ export default function Projects() {
               backgroundColor: "#fff",
               mx: "auto",
             }}
-            src={projectData[activeStep].image}
-            alt={projectData[activeStep].title}
           />
 
           <Typography
